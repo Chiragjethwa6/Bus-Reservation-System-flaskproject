@@ -1,0 +1,75 @@
+<html>
+<head>
+
+<!-- stylesheets  -->
+	<link href="../styles/style.css" rel="stylesheet" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body >
+<section id="nav">
+	<img id = "logo" src="../assets/logo.jpg" alt="msrtc" style="height: auto;width: auto; border: 2px solid blue">
+	<h2>MSRCTC Welcomes you Have a safe journey</h2>
+	
+	<ul>
+		<li><a href="/">Home </a></li>
+		<li><a href="/aboutus">About us </a></li>
+		<li><a href="/livestatus">Live Status </a></li>
+		<li style="float:right;font-size: 35px;margin-top: -4%;border-left: 2px solid black;"><a href="/signup">Sign Up</a></li>
+		<li style="float:right;font-size: 35px;margin-top: -4%;"><a href="/login">Login</a></li>
+	</ul>
+</section>
+<section id="form">
+		<form action="/searchbus" method="POST">
+
+				<h5>PICK-UP LOCATION:</h5>
+				<select class="custom-select" name="source" id="pick">
+				  <option selected>Select</option>
+				  <option value="Andheri">Andheri</option>
+				  <option value="Pune">Pune</option>
+				  <option value="Nashik">Nashik</option>
+				  <option value="borivali">borivali</option>
+				</select>
+
+				<h5>DROP LOCATION:</h5>
+				<select class="custom-select" name = "dest" id="drop">
+				  <option selected>Select</option>
+				  <option value="Ahemdabad">Ahemdabad</option>
+				  <option value="Nagpur">Nagpur</option>
+				  <option value="Ratnagiri">Ratnagiri</option>
+				  <option value="Bhopal">Bhopal</option>
+				</select>
+			<br>
+			<h5>DROP LOCATION:</h5>
+				<input type="date" name = "jdate" placeholder="dd/mm/yy">
+			<br>
+				<h5>CHOOSE BUS TYPE:</h5>
+				<select class="custom-select"  name="bus_class" id="type">
+				  <option selected>Select</option>
+				  <option value="1">General</opti on>
+				  <option value="2">Sleeper</option>
+				  <option value="3">AC-Sleeper</option>
+				  <option value="4">AC-Non Sleeper</option>
+				</select>
+			<br><br>
+			   <input type="submit"  id="btn1" class="btn btn-success" style="margin-left: 100px;">booknow</button>
+		</form>
+</section>
+
+<!-- footer part -->
+
+<footer>
+	<h2 style="margin-left: 100px;color:white">Join Us at</h2>
+	<ul>
+		<li><a href="#" class="fa fa-facebook">facebook</a></li>
+		<li><a href="" class="fa fa-twitter">twitter</a></li>
+		<li><a href="#" class="fa fa-google">google+</a></li>
+		<li><a href="#" class="fa fa-linkedin">linkedin</a></li>
+		<li><a href="#" class="fa fa-youtube">youtube</a></li>
+	</ul>
+</footer>
+</body>
+</html>
