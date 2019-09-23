@@ -9,7 +9,7 @@ def homePage() :
 
 @main.route("/searchbus")
 def searchBusPage() :
-    return 'searchbus'
+    return render_template("searchbus.html")
 
 @main.route("/searchbus",methods=['POST'])
 def searchBus() :

@@ -1,37 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-    <section>
-          <div id="form" style = "width: 40%">
-          <form action="/bus/getbus/" method="POST">
-          
-          <div class="form-group">
-          <label class="control-label" for="source">Source :</label>
-          <input type="text" name="source" class="form-control" placeholder="Enter Source ">
-          </div>
-          
-          
-          <div class="form-group">
-          <label class="control-label" for="dest">Destination :</label>
-          <input type="text" name="dest" class="form-control" placeholder="Enter Destination">
-          </div>
-          
-          <label for dropdown>Class :</label>
-          <select name = "bus_class">
-          <option value="sl">SL</option>
-          <option value="os">OS</option>
-          <option value="ss">SS</option>
-          <option value="as">AS</option>
-          <option value="any" selected="selected">ANY</option>
-          </select>
-          
-          <div class="form-group">
-          <label class="control-label" for="jdate">Enter Journey Date :</label>
-          <input type="date" name="jdate" class="form-control" placeholder="EnterJourney Date">
-          </div>
-          <br>
-          <input type="submit" name="submit" class="btn btn-success">
-          </form>
-          </div>
-    </section>
+<section >
+    <div id=form>
+    <form action="/bus/getbus/" method="POST">
+    
+    <div class="form-group">
+    <label class="control-label" for="source">Source :</label>
+    <input type="text" name="source" class="form-control" placeholder="Enter Source ">
+    </div>
+    
+    
+    <div class="form-group">
+    <label class="control-label" for="dest">Destination :</label>
+    <input type="text" name="dest" class="form-control" placeholder="Enter Destination">
+    </div>
+    
+    <label for dropdown>Class :</label>
+    <select name = "bus_class">
+    <option value="sl">SL</option>
+    <option value="os">OS</option>
+    <option value="ss">SS</option>
+    <option value="as">AS</option>
+    <option value="any" selected="selected">ANY</option>
+    </select>
+    <br>
+    <br>
+    <div class="form-group">
+    <label class="control-label" for="jdate">Enter Journey Date :</label>
+    <input type="date" name="jdate" class="form-control" placeholder="EnterJourney Date">
+    </div>
+    <br>
+    <input type="submit" name="submit" class="btn" style="background-color: rgb(78, 189, 253) ; border :2px solid rgb(245, 245, 245)">
+    </form>
+    </div>
+</section>
 
 {% endblock %}

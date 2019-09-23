@@ -16,6 +16,7 @@
 </head>
 <body>
   <section>
+    <header>
     <nav class="navbar " style="background-color: rgb(54, 193, 218)  ; height : 150px">
       <div class="navbar-header">
         <a class="navbar-brand "  href="/"><img src = "../assets/logo.jpg" alt = "MSRTC" id="logo"/><h3 style="float : left ; margin-left: 25px ;color: rgb(78, 4, 4); text-decoration-style: wavy"><b>MSRTC Online Ticket Service</b></h3></a>
@@ -25,7 +26,7 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/bus/getbus/">Search Bus</a></li>
-            
+            <li><a href="/bus/livestatus">Live Status</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -34,45 +35,13 @@
           </ul>
         </div>
       </nav>
+    </header>
     </section>
-    <section >
-        <div id=form>
-        <form action="/bus/getbus/" method="POST">
-        
-        <div class="form-group">
-        <label class="control-label" for="source">Source :</label>
-        <input type="text" name="source" class="form-control" placeholder="Enter Source ">
-        </div>
-        
-        
-        <div class="form-group">
-        <label class="control-label" for="dest">Destination :</label>
-        <input type="text" name="dest" class="form-control" placeholder="Enter Destination">
-        </div>
-        
-        <label for dropdown>Class :</label>
-        <select name = "bus_class">
-        <option value="sl">SL</option>
-        <option value="os">OS</option>
-        <option value="ss">SS</option>
-        <option value="as">AS</option>
-        <option value="any" selected="selected">ANY</option>
-        </select>
-        <br>
-        <br>
-        <div class="form-group">
-        <label class="control-label" for="jdate">Enter Journey Date :</label>
-        <input type="date" name="jdate" class="form-control" placeholder="EnterJourney Date">
-        </div>
-        <br>
-        <input type="submit" name="submit" class="btn" style="background-color: rgb(78, 189, 253) ; border :2px solid rgb(245, 245, 245)">
-        </form>
-        </div>
-  </section>
 
-      
+    <!-- dynamic part of the html -->
+    {%block content}
+
 <!-- footer part -->
-
 <footer>
   <section class= "container-fluid">
 	<h3 style="float : left ; margin-left: 25px ;color: rgb(19, 153, 231); text-decoration-style: wavy">Join Us at</h3>
