@@ -1,39 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
+
 <script>
-    $(document).ready(function(){
-        $(function(){
-            $("#source".autocomplete({
-                source: '{{stops}}'
-            },{autofocus:true}));
-            $("#dest".autocomplete({
-                source: '{{stops}}'
-            },{autofocus:true}));
-        });
-    });
+  {% if formdetails is not none %}
+      document.getElementsByName("source").value = {{formdetails.source}};
+      document.getElementsByName("dest").value = {{formdetails.dest}};
+      document.getElementsByName("bus_class").value = {{formdetails.bus_class}};
+      document.getElementsByName("jdate").value = {{formdetails.jdate}};
+      {% endif %}
 </script>
+<script>
+  var stops = JSON.parse({{stops | tojson | safe}});
+  console.log(stops)
+
+  $(document).ready(function(){
+
+      $("#source").autocomplete({
+          source: stops
+
+      });
+
+      $("#dest").autocomplete({
+          source: stops
+      })
+  })
+</script>
+
 <section>
     <section style="width: 40% ;height: auto; float: left;">
         <div id=form>
-            <form action="/bus/getbus/" method="POST">
+            <form autocomplete="off" action="/searchbus/" method="POST">
 
             <div class="form-group">
             <label class="control-label" for="source">Source :</label>
-            <input type="text" name="source" class="form-control" placeholder="Enter Source ">
+            <input type="text" id="source" name="source" class="form-control" placeholder="Enter Source ">
             </div>
             
             <div class="form-group">
             <label class="control-label" for="dest">Destination :</label>
-            <input type="text" name="dest" class="form-control" placeholder="Enter Destination">
+            <input type="text" id="dest" name="dest" class="form-control" placeholder="Enter Destination">
             </div>
             
             <label for dropdown>Class :</label>
             <select name = "bus_class">
-            <option value="sl">SL</option>
-            <option value="os">OS</option>
-            <option value="ss">SS</option>
-            <option value="as">AS</option>
-            <option value="any" selected="selected">ANY</option>
+              <option value="SS">SEMI SLEEPER LUXURY</option>
+              <option value="AS">AC SHIVNERI</option>
+              <option value="OD">ORDINARY EXPRESS</option>
+              <option value="ON">ORDINARY NIGHT</option>
+              <option value="DO">DAY ORDINARY</option>
+              <option value="SR">SLEEPER REGULAR</option>
+              <option value="SL">SEMI LUXURY</option>
+              <option value="ANY" selected="selected">ANY</option>
             </select>
             <br>
             <br>
@@ -66,26 +83,26 @@
           </div>
           <div style="padding-top : 10px ;width : 90% ; height: 100% ;float: left;">
             <div style="width: 100% ; float: left; height: 33%;">
-              <div class="col-sm-2">"{{card[0]}}"</div>
-              <div class="col-sm-3">23/09/2019</div>
+              <div class="col-sm-2">{{card.busno}}</div>
+              <div class="col-sm-3">{{formdetails.jdate}}</div>
               <div class="col-sm-2">{{formdetails.source}}</div>
               <div class="col-sm-2"></div>
-              <div class="col-sm-2">{{formdetails.source}}</div>
-              <div class="col-sm-1">{{card[6]}}</div>
+              <div class="col-sm-2">{{formdetails.dest}}</div>
+              <div class="col-sm-1">{{card.ratings}}</div>
             </div>
             <div style="width: 100% ; float: left; height: 33%;">
-              <div class="col-sm-5">{{card[1]}}}</div>
+              <div class="col-sm-5">{{card.route}}</div>
               <div class="col-sm-2">19:30</div>
               <div class="col-sm-2">02h 25m</div>
               <div class="col-sm-2">21:55</div>
               <div class="col-sm-1">455</div>
             </div>
             <div style="width: 100% ; float: left; height: 33%;">
-              <div class="col-sm-5">{{card[10]}}</div>
+              <div class="col-sm-5">{{card.bclass}}</div>
               <div class="col-sm-2">seats : </div>
-              <div class="col-sm-2">{{card[11]}}</div>
+              <div class="col-sm-2">{{card.no_of_seats}}</div>
               <div class="col-sm-2">available : </div>
-              <div class="col-sm-1">{{card[11] - len(card[-1])}}</div>
+              <div class="col-sm-1">{{card.no_of_seats -  card.seats_occupied|length  if card.seats_occupied != None else card.no_of_seats }}</div>
             </div>
           </div>
         </div>
