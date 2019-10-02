@@ -9,7 +9,7 @@ def create_app() :
      app = Flask(__name__,template_folder = "../client/templates",static_folder='../client/')
 
      app.config['SECRET_KEY'] = 'blackcat'
-     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:postgres@localhost:5432/BRS'
+     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:postgres@localhost:5432/BTRS'
 
      db.init_app(app)
 
@@ -24,6 +24,10 @@ def create_app() :
      # blueprint from payment parts of app
      from .payment import pay as payment_blueprint
      app.register_blueprint(payment_blueprint)
+
+     # blueprint for booking ticket parts of app 
+     from .bookticket import book as booking_blueprint
+     app.register_blueprint(booking_blueprint)
 
      return app
 
